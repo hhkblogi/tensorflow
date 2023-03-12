@@ -7,6 +7,13 @@ load(
     "cc_shared_library",
     "cc_test",)
 
+load(
+    "//tensorflow/core/platform:rules_cc.bzl",
+    "cc_binary",
+    "cc_library",
+    "cc_shared_library",
+    "cc_test",)
+    
 package(default_visibility = ["//visibility:public"])
 
 filegroup(
