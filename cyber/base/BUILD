@@ -1,5 +1,11 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
-load("//tools:cpplint.bzl", "cpplint")
+# load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+# load("//tools:cpplint.bzl", "cpplint")
+load(
+    "//tensorflow/core/platform:rules_cc.bzl",
+    "cc_binary",
+    "cc_library",
+    "cc_shared_library",
+    "cc_test",)
 
 package(default_visibility = ["//visibility:public"])
 
@@ -128,7 +134,7 @@ cc_test(
     size = "small",
     srcs = ["object_pool_test.cc"],
     linkopts = [
-        "-latomic",
+        # "-latomic",
     ],
     deps = [
         "//cyber/base:concurrent_object_pool",
@@ -192,4 +198,4 @@ cc_library(
     hdrs = ["wait_strategy.h"],
 )
 
-cpplint()
+# cpplint()
