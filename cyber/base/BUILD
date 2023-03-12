@@ -133,9 +133,10 @@ cc_test(
     name = "object_pool_test",
     size = "small",
     srcs = ["object_pool_test.cc"],
-    linkopts = [
-        # "-latomic",
-    ],
+    linkopts = select({
+        "//tensorflow/tsl:macos_arm64": [],
+        "//conditions:default": ["-latomic"],
+    }),
     deps = [
         "//cyber/base:concurrent_object_pool",
         "//cyber/base:object_pool",
