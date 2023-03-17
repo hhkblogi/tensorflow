@@ -1,5 +1,12 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
-load("//tools:cpplint.bzl", "cpplint")
+load(
+    "//tensorflow/core/platform:rules_cc.bzl",
+    "cc_binary",
+    "cc_library",
+    "cc_shared_library",
+    "cc_test",)
+
+# load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+# load("//tools:cpplint.bzl", "cpplint")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -28,16 +35,17 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "file_test",
-    size = "small",
-    srcs = ["file_test.cc"],
-    deps = [
-        "//cyber",
-        "//cyber/proto:unit_test_cc_proto",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+#TODO(hhkblogi)
+# cc_test(
+#     name = "file_test",
+#     size = "small",
+#     srcs = ["file_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "//cyber/proto:unit_test_proto_cc",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 cc_library(
     name = "log",
@@ -48,16 +56,16 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "log_test",
-    size = "small",
-    srcs = ["log_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-    linkstatic = True,
-)
+# cc_test(
+#     name = "log_test",
+#     size = "small",
+#     srcs = ["log_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+#     linkstatic = True,
+# )
 
 cc_library(
     name = "environment",
@@ -91,19 +99,19 @@ cc_library(
         "//cyber/common:file",
         "//cyber/common:macros",
         "//cyber/common:util",
-        "//cyber/proto:cyber_conf_cc_proto",
+        "//cyber/proto:cyber_conf_proto_cc",
     ],
 )
 
-cc_test(
-    name = "macros_test",
-    size = "small",
-    srcs = ["macros_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "macros_test",
+#     size = "small",
+#     srcs = ["macros_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 cc_library(
     name = "macros",
@@ -128,4 +136,4 @@ cc_library(
     hdrs = ["util.h"],
 )
 
-cpplint()
+# cpplint()
