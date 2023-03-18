@@ -88,7 +88,14 @@ uint64_t Time::ToMicrosecond() const {
 
 std::string Time::ToString() const {
   auto nano = std::chrono::nanoseconds(nanoseconds_);
-  system_clock::time_point tp(nano);
+#ifdef __APPLE__
+#ifdef __MACH__
+  auto micro = std::chrono::duration_cast<std::chrono::microseconds>(nano);
+  system_clock::time_point tp(micro);
+#endif 
+#else
+  system_clock::time_point tp(micro);
+#endif
   auto time = system_clock::to_time_t(tp);
   struct tm stm;
   auto ret = localtime_r(&time, &stm);
@@ -111,7 +118,14 @@ std::string Time::ToString() const {
 
 void Time::SleepUntil(const Time& time) {
   auto nano = std::chrono::nanoseconds(time.ToNanosecond());
-  system_clock::time_point tp(nano);
+#ifdef __APPLE__
+#ifdef __MACH__
+  auto micro = std::chrono::duration_cast<std::chrono::microseconds>(nano);
+  system_clock::time_point tp(micro);
+#endif
+#else
+  system_clock::time_point tp(micro);
+#endif
   std::this_thread::sleep_until(tp);
 }
 
