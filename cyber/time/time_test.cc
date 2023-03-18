@@ -16,6 +16,7 @@
 
 #include "cyber/time/time.h"
 
+#include <cstdint>
 #include <iostream>
 
 #include "gtest/gtest.h"
@@ -26,15 +27,18 @@ namespace apollo {
 namespace cyber {
 
 TEST(TimeTest, constructor) {
-  Time time(100UL);
-  EXPECT_EQ(100UL, time.ToNanosecond());
+  // Time time(100UL);
+  // EXPECT_EQ(100UL, time.ToNanosecond());
+  auto kTestValue1 = static_cast<uint64_t>(100L);
+  Time time(kTestValue1);
+  EXPECT_EQ(100L, time.ToNanosecond());
 
   time = Time(1.1);
-  EXPECT_EQ(1100000000UL, time.ToNanosecond());
+  EXPECT_EQ(static_cast<uint64_t>(1100000000UL), time.ToNanosecond());
   EXPECT_DOUBLE_EQ(1.1, time.ToSecond());
 
   time = Time(1, 1);
-  EXPECT_EQ(1000000001UL, time.ToNanosecond());
+  EXPECT_EQ(static_cast<uint64_t>(1000000001UL), time.ToNanosecond());
   EXPECT_DOUBLE_EQ(1.000000001, time.ToSecond());
 
   Time time2(time);
@@ -42,9 +46,9 @@ TEST(TimeTest, constructor) {
 }
 
 TEST(TimeTest, operators) {
-  Time t1(100);
+  Time t1(static_cast<uint64_t>(100));
   Duration d(200);
-  Time t2(300);
+  Time t2(static_cast<uint64_t>(300));
   EXPECT_NE(t1, t2);
   EXPECT_LT(t1, t2);
   EXPECT_LE(t1, t2);
@@ -59,9 +63,13 @@ TEST(TimeTest, operators) {
 }
 
 TEST(TimeTest, to_string) {
-  Time t1(1531225311123456789UL);
+  auto kTestValue1 = static_cast<uint64_t>(1531225311123456789UL);
+  // Time t1(1531225311123456789UL);
+  Time t1(kTestValue1);
   std::cout << t1.ToString().c_str() << std::endl;
-  Time t2(1531225311000006789UL);
+  auto kTestValue2 = static_cast<uint64_t>(1531225311000006789UL);
+  // Time t2(1531225311000006789L);
+  Time t2(kTestValue2);
   std::cout << t2.ToString().c_str() << std::endl;
 }
 
