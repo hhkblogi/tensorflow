@@ -94,7 +94,7 @@ std::string Time::ToString() const {
   system_clock::time_point tp(micro);
 #endif 
 #else
-  system_clock::time_point tp(micro);
+  system_clock::time_point tp(nano);
 #endif
   auto time = system_clock::to_time_t(tp);
   struct tm stm;
@@ -124,7 +124,7 @@ void Time::SleepUntil(const Time& time) {
   system_clock::time_point tp(micro);
 #endif
 #else
-  system_clock::time_point tp(micro);
+  system_clock::time_point tp(nano);
 #endif
   std::this_thread::sleep_until(tp);
 }
