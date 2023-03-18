@@ -1,5 +1,13 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
-load("//tools:cpplint.bzl", "cpplint")
+# load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+# load("//tools:cpplint.bzl", "cpplint")
+
+load(
+    "//tensorflow/core/platform:rules_cc.bzl",
+    "cc_binary",
+    "cc_library",
+    "cc_shared_library",
+    "cc_test",)
+
 
 package(default_visibility = ["//visibility:public"])
 
@@ -68,7 +76,7 @@ cc_library(
         "//cyber/common:log",
         "//cyber/common:macros",
         "//cyber/common:util",
-        "//cyber/proto:run_mode_conf_cc_proto",
+        "//cyber/proto:run_mode_conf_proto_cc",
     ],
 )
 
@@ -82,4 +90,4 @@ cc_test(
     ],
 )
 
-cpplint()
+# cpplint()
