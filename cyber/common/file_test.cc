@@ -97,18 +97,30 @@ TEST(FileTest, file_utils_test) {
   rmdir((current_path + "/2").c_str());
 }
 
-// TEST(FileTest, ListSubPaths) {
-//   const auto root_subdirs = ListSubPaths("/");
+TEST(FileTest, ListSubPaths) {
+  // std::cout << "workroot: " << WorkRoot() << std::endl;
+  const auto root_subdirs = ListSubPaths("/");
+  // Some common root subdirs should exist.
+#ifdef __APPLE__
+#ifdef __MACH__
+  EXPECT_NE(root_subdirs.end(),
+            std::find(root_subdirs.begin(), root_subdirs.end(), "Users"));
+  EXPECT_NE(root_subdirs.end(),
+            std::find(root_subdirs.begin(), root_subdirs.end(), "Applications"));
+#endif
+#endif
 
-//   // Some common root subdirs should exist.
-//   EXPECT_NE(root_subdirs.end(),
-//             std::find(root_subdirs.begin(), root_subdirs.end(), "home"));
-//   EXPECT_NE(root_subdirs.end(),
-//             std::find(root_subdirs.begin(), root_subdirs.end(), "root"));
-//   // Something shouldn't exist.
-//   EXPECT_EQ(root_subdirs.end(),
-//             std::find(root_subdirs.begin(), root_subdirs.end(), "impossible"));
-// }
+#ifdef __linux__
+  EXPECT_NE(root_subdirs.end(),
+            std::find(root_subdirs.begin(), root_subdirs.end(), "home"));
+  EXPECT_NE(root_subdirs.end(),
+            std::find(root_subdirs.begin(), root_subdirs.end(), "root"));
+#endif
+
+  // Something shouldn't exist.
+  EXPECT_EQ(root_subdirs.end(),
+            std::find(root_subdirs.begin(), root_subdirs.end(), "impossible"));
+}
 
 // TEST(FileTest, Glob) {
 //   // Match none.
