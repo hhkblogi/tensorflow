@@ -121,20 +121,20 @@ TEST(FileTest, ListSubPaths) {
             std::find(root_subdirs.begin(), root_subdirs.end(), "impossible"));
 }
 
-// TEST(FileTest, Glob) {
-//   // Match none.
-//   EXPECT_TRUE(Glob("/path/impossible/*").empty());
-//   // Match one.
-//   EXPECT_THAT(Glob("/apollo"), testing::ElementsAre(std::string("/apollo")));
-//   EXPECT_THAT(Glob("/apol?o"), testing::ElementsAre(std::string("/apollo")));
-//   // Match multiple.
-//   EXPECT_THAT(
-//       Glob("/apol?o/modules/p*"),
-//       testing::AllOf(
-//           testing::Contains(std::string("/apollo/modules/perception")),
-//           testing::Contains(std::string("/apollo/modules/planning")),
-//           testing::Contains(std::string("/apollo/modules/prediction"))));
-// }
+TEST(FileTest, Glob) {
+  // Match none.
+  EXPECT_TRUE(Glob("/path/impossible/*").empty());
+  // // Match one.
+  EXPECT_THAT(Glob("cyber"), testing::ElementsAre(std::string("cyber")));
+  EXPECT_THAT(Glob("cyb?r"), testing::ElementsAre(std::string("cyber")));
+  // Match multiple.
+  EXPECT_THAT(
+      Glob("cyb?r/conf/*.conf"),
+      testing::AllOf(
+          testing::Contains(std::string("cyber/conf/cyber.pb.conf")),
+          testing::Contains(std::string("cyber/conf/control_sched.conf")),
+          testing::Contains(std::string("cyber/conf/compute_sched.conf"))));
+}
 
 TEST(FileTest, GetAbsolutePath) {
   EXPECT_EQ("./xx.txt", GetAbsolutePath("", "./xx.txt"));
