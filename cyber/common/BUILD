@@ -61,16 +61,17 @@ cc_library(
     ],
 )
 
-# cc_test(
-#     name = "log_test",
-#     size = "small",
-#     srcs = ["log_test.cc"],
-#     deps = [
-#         "//cyber",
-#         "@com_google_googletest//:gtest_main",
-#     ],
-#     linkstatic = True,
-# )
+cc_test(
+    name = "log_test",
+    size = "small",
+    srcs = ["log_test.cc"],
+    deps = [
+        # "//cyber",
+        ":log",
+        "@com_google_googletest//:gtest_main",
+    ],
+    linkstatic = True,
+)
 
 cc_library(
     name = "environment",
