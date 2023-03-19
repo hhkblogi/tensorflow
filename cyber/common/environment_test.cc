@@ -39,6 +39,7 @@ TEST(EnvironmentTest, get_env) {
 
 TEST(EnvironmentTest, work_root) {
   std::string before = WorkRoot();
+  std::cout << "current dir: " << before << std::endl;
   unsetenv("CYBER_PATH");
   std::string after = GetEnv("CYBER_PATH");
   EXPECT_EQ(after, "");

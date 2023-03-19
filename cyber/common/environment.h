@@ -18,6 +18,7 @@
 #define CYBER_COMMON_ENVIRONMENT_H_
 
 #include <cassert>
+#include <filesystem>
 #include <string>
 
 #include "cyber/common/log.h"
@@ -40,7 +41,9 @@ inline std::string GetEnv(const std::string& var_name,
 inline const std::string WorkRoot() {
   std::string work_root = GetEnv("CYBER_PATH");
   if (work_root.empty()) {
-    work_root = "/apollo/cyber";
+    // work_root = "/apollo/cyber";
+    work_root = std::filesystem::current_path();
+    return work_root;
   }
   return work_root;
 }
