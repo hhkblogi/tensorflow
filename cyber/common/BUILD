@@ -109,15 +109,16 @@ cc_library(
     ],
 )
 
-# cc_test(
-#     name = "macros_test",
-#     size = "small",
-#     srcs = ["macros_test.cc"],
-#     deps = [
-#         "//cyber",
-#         "@com_google_googletest//:gtest_main",
-#     ],
-# )
+cc_test(
+    name = "macros_test",
+    size = "small",
+    srcs = ["macros_test.cc"],
+    deps = [
+        # "//cyber",
+        ":macros",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
 
 cc_library(
     name = "macros",
