@@ -35,17 +35,22 @@ cc_library(
     ],
 )
 
-#TODO(hhkblogi)
-# cc_test(
-#     name = "file_test",
-#     size = "small",
-#     srcs = ["file_test.cc"],
-#     deps = [
-#         "//cyber",
-#         "//cyber/proto:unit_test_proto_cc",
-#         "@com_google_googletest//:gtest_main",
-#     ],
-# )
+cc_test(
+    name = "file_test",
+    size = "small",
+    srcs = [
+        "file_test.cc",
+    ],
+    data = [ # Used for PathExist()
+        "//cyber/conf:cyber_conf"
+    ],
+    deps = [
+        # "//cyber"
+        ":file",
+        "//cyber/proto:unit_test_proto_cc",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
 
 cc_library(
     name = "log",

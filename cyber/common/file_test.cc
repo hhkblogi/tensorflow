@@ -147,6 +147,13 @@ namespace common {
 //   EXPECT_EQ("", GetFileName("/path/to/", true));
 // }
 
+TEST(FileTest, PathExists) {
+  EXPECT_TRUE(PathExists("cyber/conf/cyber.pb.conf"));
+  EXPECT_FALSE(PathExists("conf/cyber.pb.conf"));
+  EXPECT_TRUE(PathExists("cyber/conf/dreamview_sched.conf"));
+  EXPECT_FALSE(PathExists("conf/dreamview_sched.conf"));
+}
+
 }  // namespace common
 }  // namespace cyber
 }  // namespace apollo
