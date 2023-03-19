@@ -98,7 +98,6 @@ TEST(FileTest, file_utils_test) {
 }
 
 TEST(FileTest, ListSubPaths) {
-  // std::cout << "workroot: " << WorkRoot() << std::endl;
   const auto root_subdirs = ListSubPaths("/");
   // Some common root subdirs should exist.
 #ifdef __APPLE__
