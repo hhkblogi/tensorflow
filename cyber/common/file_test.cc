@@ -125,14 +125,14 @@ namespace common {
 //           testing::Contains(std::string("/apollo/modules/prediction"))));
 // }
 
-// TEST(FileTest, GetAbsolutePath) {
-//   EXPECT_EQ("./xx.txt", GetAbsolutePath("", "./xx.txt"));
-//   EXPECT_EQ("/abc", GetAbsolutePath("/abc", ""));
-//   EXPECT_EQ("/home/work/xx.txt", GetAbsolutePath("/home/work", "xx.txt"));
-//   EXPECT_EQ("/home/work/xx.txt", GetAbsolutePath("/home/work/", "xx.txt"));
-//   EXPECT_EQ("/xx.txt", GetAbsolutePath("/home/work", "/xx.txt"));
-//   EXPECT_EQ("/home/work/./xx.txt", GetAbsolutePath("/home/work", "./xx.txt"));
-// }
+TEST(FileTest, GetAbsolutePath) {
+  EXPECT_EQ("./xx.txt", GetAbsolutePath("", "./xx.txt"));
+  EXPECT_EQ("/abc", GetAbsolutePath("/abc", ""));
+  EXPECT_EQ("/home/work/xx.txt", GetAbsolutePath("/home/work", "xx.txt"));
+  EXPECT_EQ("/home/work/xx.txt", GetAbsolutePath("/home/work/", "xx.txt"));
+  EXPECT_EQ("/xx.txt", GetAbsolutePath("/home/work", "/xx.txt"));
+  EXPECT_EQ("/home/work/./xx.txt", GetAbsolutePath("/home/work", "./xx.txt"));
+}
 
 TEST(FileTest, GetFileName) {
   EXPECT_EQ("xx.txt", GetFileName("xx.txt"));
