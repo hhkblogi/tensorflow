@@ -52,50 +52,50 @@ TEST(FileTest, proto_set_get_test) {
   remove("message.ascii");
 }
 
-// TEST(FileTest, file_utils_test) {
-//   apollo::cyber::proto::UnitTest message;
-//   message.set_class_name("FileTest");
-//   apollo::cyber::proto::UnitTest read_message;
-//   EXPECT_TRUE(SetProtoToBinaryFile(message, "message.binary"));
+TEST(FileTest, file_utils_test) {
+  apollo::cyber::proto::UnitTest message;
+  message.set_class_name("FileTest");
+  apollo::cyber::proto::UnitTest read_message;
+  EXPECT_TRUE(SetProtoToBinaryFile(message, "message.binary"));
 
-//   std::string content;
-//   GetContent("message.binary", &content);
-//   EXPECT_FALSE(content.empty());
-//   content = "";
-//   GetContent("not_exists_dir/message.proto", &content);
-//   EXPECT_EQ("", content);
+  std::string content;
+  GetContent("message.binary", &content);
+  EXPECT_FALSE(content.empty());
+  content = "";
+  GetContent("not_exists_dir/message.proto", &content);
+  EXPECT_EQ("", content);
 
-//   EXPECT_TRUE(PathExists("./"));
-//   EXPECT_FALSE(PathExists("not_exits_file"));
+  EXPECT_TRUE(PathExists("./"));
+  EXPECT_FALSE(PathExists("not_exits_file"));
 
-//   EXPECT_TRUE(DirectoryExists("./"));
-//   EXPECT_FALSE(DirectoryExists("not_exits_file"));
-//   EXPECT_FALSE(DirectoryExists("message.binary"));
+  EXPECT_TRUE(DirectoryExists("./"));
+  EXPECT_FALSE(DirectoryExists("not_exits_file"));
+  EXPECT_FALSE(DirectoryExists("message.binary"));
 
-//   EXPECT_FALSE(CopyFile("not_exists_file", "1.txt"));
-//   EXPECT_TRUE(CopyFile("message.binary", "message.binary.copy"));
+  EXPECT_FALSE(CopyFile("not_exists_file", "1.txt"));
+  EXPECT_TRUE(CopyFile("message.binary", "message.binary.copy"));
 
-//   std::string current_path = GetCurrentPath();
-//   EXPECT_TRUE(EnsureDirectory(current_path));
-//   EXPECT_TRUE("/not_exists_dir");
-//   EXPECT_TRUE(EnsureDirectory(current_path + "/1"));
-//   EXPECT_TRUE(EnsureDirectory(current_path + "/1/2"));
-//   EXPECT_TRUE(EnsureDirectory(current_path + "/1/2/3"));
-//   EXPECT_TRUE(EnsureDirectory(current_path + "/2"));
-//   EXPECT_TRUE(CopyFile("message.binary", current_path + "/2/message.binary"));
-//   EXPECT_TRUE(DirectoryExists(current_path + "/1/2/3"));
+  std::string current_path = GetCurrentPath();
+  EXPECT_TRUE(EnsureDirectory(current_path));
+  EXPECT_TRUE("/not_exists_dir");
+  EXPECT_TRUE(EnsureDirectory(current_path + "/1"));
+  EXPECT_TRUE(EnsureDirectory(current_path + "/1/2"));
+  EXPECT_TRUE(EnsureDirectory(current_path + "/1/2/3"));
+  EXPECT_TRUE(EnsureDirectory(current_path + "/2"));
+  EXPECT_TRUE(CopyFile("message.binary", current_path + "/2/message.binary"));
+  EXPECT_TRUE(DirectoryExists(current_path + "/1/2/3"));
 
-//   EXPECT_FALSE(RemoveAllFiles("/not_exists_dir"));
-//   EXPECT_FALSE(RemoveAllFiles(current_path + "/1"));
-//   EXPECT_TRUE(RemoveAllFiles(current_path + "/2"));
+  EXPECT_FALSE(RemoveAllFiles("/not_exists_dir"));
+  EXPECT_FALSE(RemoveAllFiles(current_path + "/1"));
+  EXPECT_TRUE(RemoveAllFiles(current_path + "/2"));
 
-//   remove("message.binary");
-//   remove("message.binary.copy");
-//   rmdir((current_path + "/1/2/3").c_str());
-//   rmdir((current_path + "/1/2").c_str());
-//   rmdir((current_path + "/1").c_str());
-//   rmdir((current_path + "/2").c_str());
-// }
+  remove("message.binary");
+  remove("message.binary.copy");
+  rmdir((current_path + "/1/2/3").c_str());
+  rmdir((current_path + "/1/2").c_str());
+  rmdir((current_path + "/1").c_str());
+  rmdir((current_path + "/2").c_str());
+}
 
 // TEST(FileTest, ListSubPaths) {
 //   const auto root_subdirs = ListSubPaths("/");
