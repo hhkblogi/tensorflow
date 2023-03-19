@@ -41,8 +41,8 @@ inline std::string GetEnv(const std::string& var_name,
 inline const std::string WorkRoot() {
   std::string work_root = GetEnv("CYBER_PATH");
   if (work_root.empty()) {
-    // work_root = "/apollo/cyber";
-    work_root = std::filesystem::current_path();
+    // Specified directory from //cyber/conf:cyber_conf
+    work_root = "cyber";
     return work_root;
   }
   return work_root;
