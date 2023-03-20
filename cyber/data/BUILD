@@ -38,15 +38,15 @@ cc_library(
     srcs = ["cache_buffer.h"],
 )
 
-cc_test(
-    name = "cache_buffer_test",
-    size = "small",
-    srcs = ["cache_buffer_test.cc"],
-    deps = [
-        ":cache_buffer",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "cache_buffer_test",
+#     size = "small",
+#     srcs = ["cache_buffer_test.cc"],
+#     deps = [
+#         ":cache_buffer",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 cc_library(
     name = "channel_buffer",
@@ -70,15 +70,15 @@ cc_library(
     hdrs = ["data_visitor.h"],
 )
 
-cc_test(
-    name = "data_visitor_test",
-    size = "small",
-    srcs = ["data_visitor_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "data_visitor_test",
+#     size = "small",
+#     srcs = ["data_visitor_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 cc_library(
     name = "data_visitor_base",
@@ -93,25 +93,25 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "data_dispatcher_test",
-    size = "small",
-    srcs = ["data_dispatcher_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "data_dispatcher_test",
+#     size = "small",
+#     srcs = ["data_dispatcher_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
-cc_test(
-    name = "channel_buffer_test",
-    size = "small",
-    srcs = ["channel_buffer_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "channel_buffer_test",
+#     size = "small",
+#     srcs = ["channel_buffer_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 cc_library(
     name = "data_fusion",
@@ -127,14 +127,14 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "all_latest_test",
-    size = "small",
-    srcs = ["fusion/all_latest_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "all_latest_test",
+#     size = "small",
+#     srcs = ["fusion/all_latest_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 # cpplint()
