@@ -22,7 +22,12 @@ cc_library(
     name = "croutine",
     srcs = ["croutine.cc"],
     hdrs = ["croutine.h"],
-    linkopts = ["-latomic"],
+    linkopts = select(
+        {
+            "//tensorflow/tsl:linux_aarch64": ["-latomic"],
+            "//tensorflow/tsl:macos_arm64": [],
+        }
+    ), 
     deps = [
         "//cyber/base:atomic_hash_map",
         "//cyber/base:atomic_rw_lock",
