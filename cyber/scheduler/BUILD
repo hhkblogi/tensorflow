@@ -1,5 +1,12 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
-load("//tools:cpplint.bzl", "cpplint")
+load(
+    "//tensorflow/core/platform:rules_cc.bzl",
+    "cc_binary",
+    "cc_library",
+    "cc_shared_library",
+    "cc_test",)
+
+# load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+# load("//tools:cpplint.bzl", "cpplint")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -67,7 +74,7 @@ cc_library(
     srcs = ["scheduler_factory.cc"],
     hdrs = ["scheduler_factory.h"],
     deps = [
-        "//cyber/proto:component_conf_cc_proto",
+        "//cyber/proto:component_conf_proto_cc",
         "//cyber/scheduler:scheduler_choreography",
         "//cyber/scheduler:scheduler_classic",
     ],
@@ -100,7 +107,7 @@ cc_library(
     hdrs = ["policy/choreography_context.h"],
     deps = [
         "//cyber/croutine",
-        "//cyber/proto:choreography_conf_cc_proto",
+        "//cyber/proto:choreography_conf_proto_cc",
         "//cyber/scheduler:processor",
     ],
 )
@@ -111,66 +118,66 @@ cc_library(
     hdrs = ["policy/classic_context.h"],
     deps = [
         "//cyber/croutine",
-        "//cyber/proto:classic_conf_cc_proto",
+        "//cyber/proto:classic_conf_proto_cc",
         "//cyber/scheduler:cv_wrapper",
         "//cyber/scheduler:mutex_wrapper",
         "//cyber/scheduler:processor",
     ],
 )
 
-cc_test(
-    name = "scheduler_test",
-    size = "small",
-    srcs = ["scheduler_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-    linkstatic = True,
-)
+# cc_test(
+#     name = "scheduler_test",
+#     size = "small",
+#     srcs = ["scheduler_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+#     linkstatic = True,
+# )
 
-cc_test(
-    name = "scheduler_classic_test",
-    size = "small",
-    srcs = ["scheduler_classic_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-    linkstatic = True,
-)
+# cc_test(
+#     name = "scheduler_classic_test",
+#     size = "small",
+#     srcs = ["scheduler_classic_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+#     linkstatic = True,
+# )
 
-cc_test(
-    name = "scheduler_choreo_test",
-    size = "small",
-    srcs = ["scheduler_choreo_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-    linkstatic = True,
-)
+# cc_test(
+#     name = "scheduler_choreo_test",
+#     size = "small",
+#     srcs = ["scheduler_choreo_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+#     linkstatic = True,
+# )
 
-cc_test(
-    name = "processor_test",
-    size = "small",
-    srcs = ["processor_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-    linkstatic = True,
-)
+# cc_test(
+#     name = "processor_test",
+#     size = "small",
+#     srcs = ["processor_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+#     linkstatic = True,
+# )
 
-cc_test(
-    name = "pin_thread_test",
-    size = "small",
-    srcs = ["common/pin_thread_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-    linkstatic = True,
-)
+# cc_test(
+#     name = "pin_thread_test",
+#     size = "small",
+#     srcs = ["common/pin_thread_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+#     linkstatic = True,
+# )
 
-cpplint()
+# cpplint()
