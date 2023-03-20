@@ -16,8 +16,9 @@
 
 #include "cyber/scheduler/scheduler.h"
 
+#ifndef __APPLE__
 #include <sched.h>
-
+#endif
 #include <utility>
 
 #include "cyber/common/environment.h"
@@ -77,6 +78,7 @@ bool Scheduler::NotifyTask(uint64_t crid) {
 }
 
 void Scheduler::ProcessLevelResourceControl() {
+#ifndef __APPLE__
   std::vector<int> cpus;
   ParseCpuset(process_level_cpuset_, &cpus);
   cpu_set_t set;
@@ -85,6 +87,7 @@ void Scheduler::ProcessLevelResourceControl() {
     CPU_SET(cpu, &set);
   }
   pthread_setaffinity_np(pthread_self(), sizeof(set), &set);
+#endif
 }
 
 void Scheduler::SetInnerThreadAttr(const std::string& name, std::thread* thr) {
