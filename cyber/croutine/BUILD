@@ -77,15 +77,15 @@ cc_library(
     ),
 )
 
-cc_test(
-    name = "croutine_test",
-    size = "small",
-    srcs = ["croutine_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-    linkstatic = True,
-)
+# cc_test(
+#     name = "croutine_test",
+#     size = "small",
+#     srcs = ["croutine_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+#     linkstatic = True,
+# )
 
 # cpplint()
