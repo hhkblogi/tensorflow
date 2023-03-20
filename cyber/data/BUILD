@@ -53,7 +53,7 @@ cc_library(
     hdrs = ["channel_buffer.h"],
     deps = [
         ":data_notifier",
-        "//cyber/proto:component_conf_cc_proto",
+        "//cyber/proto:component_conf_proto_cc",
     ],
 )
 
