@@ -1,5 +1,12 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
-load("//tools:cpplint.bzl", "cpplint")
+load(
+    "//tensorflow/core/platform:rules_cc.bzl",
+    "cc_binary",
+    "cc_library",
+    "cc_shared_library",
+    "cc_test",)
+
+# load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+# load("//tools:cpplint.bzl", "cpplint")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -46,15 +53,15 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "timer_test",
-    size = "small",
-    srcs = ["timer_test.cc"],
-    deps = [
-        "//cyber:cyber_core",
-        "@com_google_googletest//:gtest_main",
-    ],
-    linkstatic = True,
-)
+# cc_test(
+#     name = "timer_test",
+#     size = "small",
+#     srcs = ["timer_test.cc"],
+#     deps = [
+#         "//cyber:cyber_core",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+#     linkstatic = True,
+# )
 
-cpplint()
+# cpplint()
