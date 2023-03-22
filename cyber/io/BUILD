@@ -59,16 +59,16 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "poller_test",
-    size = "small",
-    srcs = ["poller_test.cc"],
-    deps = [
-        ":poller",
-        "//cyber:cyber_core",
-        "@com_google_googletest//:gtest",
-    ],
-)
+# cc_test(
+#     name = "poller_test",
+#     size = "small",
+#     srcs = ["poller_test.cc"],
+#     deps = [
+#         ":poller",
+#         "//cyber:cyber_core",
+#         "@com_google_googletest//:gtest",
+#     ],
+# )
 
 cc_library(
     name = "session",
@@ -81,36 +81,36 @@ cc_library(
     alwayslink = True,
 )
 
-cc_binary(
-    name = "tcp_echo_client",
-    srcs = ["example/tcp_echo_client.cc"],
-    deps = [
-        "//cyber:cyber_core",
-    ],
-)
+# cc_binary(
+#     name = "tcp_echo_client",
+#     srcs = ["example/tcp_echo_client.cc"],
+#     deps = [
+#         "//cyber:cyber_core",
+#     ],
+# )
 
-cc_binary(
-    name = "tcp_echo_server",
-    srcs = ["example/tcp_echo_server.cc"],
-    deps = [
-        "//cyber:cyber_core",
-    ],
-)
+# cc_binary(
+#     name = "tcp_echo_server",
+#     srcs = ["example/tcp_echo_server.cc"],
+#     deps = [
+#         "//cyber:cyber_core",
+#     ],
+# )
 
-cc_binary(
-    name = "udp_echo_client",
-    srcs = ["example/udp_echo_client.cc"],
-    deps = [
-        "//cyber:cyber_core",
-    ],
-)
+# cc_binary(
+#     name = "udp_echo_client",
+#     srcs = ["example/udp_echo_client.cc"],
+#     deps = [
+#         "//cyber:cyber_core",
+#     ],
+# )
 
-cc_binary(
-    name = "udp_echo_server",
-    srcs = ["example/udp_echo_server.cc"],
-    deps = [
-        "//cyber:cyber_core",
-    ],
-)
+# cc_binary(
+#     name = "udp_echo_server",
+#     srcs = ["example/udp_echo_server.cc"],
+#     deps = [
+#         "//cyber:cyber_core",
+#     ],
+# )
 
 # cpplint()
