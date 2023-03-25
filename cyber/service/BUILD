@@ -1,5 +1,12 @@
-load("@rules_cc//cc:defs.bzl", "cc_library")
-load("//tools:cpplint.bzl", "cpplint")
+# load("@rules_cc//cc:defs.bzl", "cc_library")
+# load("//tools:cpplint.bzl", "cpplint")
+
+load(
+    "//tensorflow/core/platform:rules_cc.bzl",
+    "cc_binary",
+    "cc_library",
+    "cc_shared_library",
+    "cc_test",)
 
 package(default_visibility = ["//visibility:public"])
 
@@ -37,4 +44,4 @@ cc_library(
     hdrs = ["service_base.h"],
 )
 
-cpplint()
+# cpplint()
