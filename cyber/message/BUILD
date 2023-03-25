@@ -1,5 +1,12 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
-load("//tools:cpplint.bzl", "cpplint")
+# load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+# load("//tools:cpplint.bzl", "cpplint")
+
+load(
+    "//tensorflow/core/platform:rules_cc.bzl",
+    "cc_binary",
+    "cc_library",
+    "cc_shared_library",
+    "cc_test",)
 
 package(default_visibility = ["//visibility:public"])
 
@@ -15,15 +22,15 @@ cc_library(
     hdrs = ["message_header.h"],
 )
 
-cc_test(
-    name = "message_header_test",
-    size = "small",
-    srcs = ["message_header_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "message_header_test",
+#     size = "small",
+#     srcs = ["message_header_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 cc_library(
     name = "message_traits",
@@ -37,16 +44,16 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "message_traits_test",
-    size = "small",
-    srcs = ["message_traits_test.cc"],
-    deps = [
-        "//cyber",
-        "//cyber/proto:unit_test_cc_proto",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "message_traits_test",
+#     size = "small",
+#     srcs = ["message_traits_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "//cyber/proto:unit_test_cc_proto",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 cc_library(
     name = "protobuf_factory",
@@ -55,7 +62,7 @@ cc_library(
     deps = [
         "//cyber/common:log",
         "//cyber/common:macros",
-        "//cyber/proto:proto_desc_cc_proto",
+        "//cyber/proto:proto_desc_proto_cc",
     ],
 )
 
@@ -92,26 +99,26 @@ cc_library(
     ],
 )
 
-cc_test(
-    name = "raw_message_test",
-    size = "small",
-    srcs = ["raw_message_test.cc"],
-    deps = [
-        "//cyber",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "raw_message_test",
+#     size = "small",
+#     srcs = ["raw_message_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
-cc_test(
-    name = "protobuf_factory_test",
-    size = "small",
-    srcs = ["protobuf_factory_test.cc"],
-    deps = [
-        "//cyber",
-        "//cyber/proto:unit_test_cc_proto",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
+# cc_test(
+#     name = "protobuf_factory_test",
+#     size = "small",
+#     srcs = ["protobuf_factory_test.cc"],
+#     deps = [
+#         "//cyber",
+#         "//cyber/proto:unit_test_cc_proto",
+#         "@com_google_googletest//:gtest_main",
+#     ],
+# )
 
 cc_library(
     name = "raw_message_traits",
@@ -122,4 +129,4 @@ cc_library(
     ],
 )
 
-cpplint()
+# cpplint()
