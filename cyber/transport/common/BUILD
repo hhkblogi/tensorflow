@@ -43,8 +43,18 @@ cc_library(
     hdrs = ["identity.h"],
     deps = [
         "//cyber/common:util",
-        "@uuid",
+        # "@uuid",
     ],
+    copts = select({
+        "//tensorflow/tsl:macos_arm64": [
+            "-luuid",
+        ],
+        "//tensorflow/tsl:linux_aarch64": [],
+    }),
+    linkopts = select({
+        "//tensorflow/tsl:macos_arm64": [],
+        "//tensorflow/tsl:linux_aarch64": ["-luuid",]
+    })
 )
 
 cc_test(
@@ -52,7 +62,8 @@ cc_test(
     size = "small",
     srcs = ["identity_test.cc"],
     deps = [
-        "//cyber:cyber_core",
+        # "//cyber:cyber_core",
+        ":identity",
         "@com_google_googletest//:gtest_main",
     ],
 )
