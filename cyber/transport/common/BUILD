@@ -23,7 +23,7 @@ cc_library(
     deps = [
         ":identity",
         "//cyber/common:global_data",
-        "//cyber/proto:role_attributes_cc_proto",
+        "//cyber/proto:role_attributes_proto_cc",
     ],
 )
 
@@ -32,7 +32,8 @@ cc_test(
     size = "small",
     srcs = ["endpoint_test.cc"],
     deps = [
-        "//cyber:cyber_core",
+        # "//cyber:cyber_core",
+        ":endpoint",
         "@com_google_googletest//:gtest_main",
     ],
 )
