@@ -10,6 +10,22 @@ load(
 
 package(default_visibility = ["//visibility:public"])
 
+cc_library(
+    name = "shm",
+    deps = [
+        ":block",
+        ":condition_notifier",
+        ":multicast_notifier",
+        ":notifier_base",
+        ":notifier_factory",
+        ":readable_info",
+        ":segment",
+        "segment_factory",
+        "shm_conf",
+        "state",  
+    ]
+)
+
 filegroup(
     name = "cyber_transport_shm_hdrs",
     srcs = glob([
@@ -150,7 +166,10 @@ cc_test(
     srcs = ["condition_notifier_test.cc"],
     tags = ["exclusive"],
     deps = [
-        "//cyber:cyber_core",
+        # "//cyber:cyber_core",
+        ":shm",
+        "//cyber/common",
+        "//cyber/base",
         "@com_google_googletest//:gtest_main",
     ],
     linkstatic = True,
