@@ -10,6 +10,21 @@ load(
 
 package(default_visibility = ["//visibility:public"])
 
+cc_library(
+    name = "message",
+    srcs = [":cyber_message_hdrs"],
+    deps = [
+        ":message_header",
+        ":message_traits",
+        ":protobuf_factory",
+        ":protobuf_traits",
+        ":py_message",
+        ":py_message_traits",
+        ":raw_message",
+        ":raw_message_traits",
+    ],
+)
+
 filegroup(
     name = "cyber_message_hdrs",
     srcs = glob([
