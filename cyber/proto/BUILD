@@ -101,6 +101,30 @@ package(default_visibility = ["//visibility:public"])
 #     ],
 # )
 
+cc_library(
+    name = "proto",
+    deps = [
+        ":topology_change_proto_cc",
+        ":dag_conf_proto_cc",
+        ":proto_desc_proto_cc",
+        ":choreography_conf_proto_cc",
+        ":component_conf_proto_cc",
+        ":cyber_conf_proto_cc",
+        ":perf_conf_proto_cc",
+        ":classic_conf_proto_cc",
+        ":parameter_proto_cc",
+        ":unit_test_proto_cc",
+        ":simple_proto_cc",
+        ":scheduler_conf_proto_cc",
+        ":transport_conf_proto_cc",
+        ":qos_profile_proto_cc",
+        ":record_proto_cc",
+        ":run_mode_conf_proto_cc",
+        ":role_attributes_proto_cc",
+        ":clock_proto_cc",
+    ],
+)
+
 tf_proto_library(
     name = "topology_change_proto",
     srcs = ["topology_change.proto"],
@@ -127,13 +151,13 @@ tf_proto_library(
 #     ],
 # )
 
-# tf_proto_library(
-#     name = "dag_conf_proto",
-#     srcs = ["dag_conf.proto"],
-#     protodeps = [
-#         ":component_conf_proto",
-#     ],
-# )
+tf_proto_library(
+    name = "dag_conf_proto",
+    srcs = ["dag_conf.proto"],
+    protodeps = [
+        ":component_conf_proto",
+    ],
+)
 
 # py_proto_library(
 #     name = "dag_conf_py_pb2",
