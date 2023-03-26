@@ -17,6 +17,8 @@
 #ifndef CYBER_TRANSPORT_SHM_XSI_SEGMENT_H_
 #define CYBER_TRANSPORT_SHM_XSI_SEGMENT_H_
 
+#include <sys/types.h>
+
 #include "cyber/transport/shm/segment.h"
 
 namespace apollo {
