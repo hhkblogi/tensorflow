@@ -61,6 +61,7 @@ cc_test(
         # "//cyber:cyber_core",
         ":message_info",
         ":listener_handler",
+        "@com_google_protobuf//:protobuf",
         "@com_google_googletest//:gtest_main",
     ],
     linkstatic = True,
